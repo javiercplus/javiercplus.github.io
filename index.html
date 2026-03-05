@@ -6,17 +6,21 @@
     <title>Javier Castro | Developer Portfolio</title>
     <style>
         :root {
-            --bg-color: #0d1117;
+            --bg-color: #09090b;
             --card-bg: #161b22;
-            --text-main: #c9d1d9;
-            --text-dim: #8b949e;
-            --accent: #58a6ff;
-            --border: #30363d;
+            --text-main: #e2e8f0;
+            --text-dim: #94a3b8;
+            --accent: #a855f7;
+            --accent-glow: rgba(168, 85, 247, 0.4);
+            --border: #27272a;
         }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
             background-color: var(--bg-color);
+            background-image: radial-gradient(circle at 10% 0%, rgba(168, 85, 247, 0.15) 0%, transparent 400px),
+                              radial-gradient(circle at 90% 100%, rgba(168, 85, 247, 0.1) 0%, transparent 400px);
+            background-attachment: fixed;
             color: var(--text-main);
             line-height: 1.6;
             margin: 0;
@@ -28,20 +32,97 @@
         .container {
             max-width: 800px;
             width: 100%;
+            position: relative;
         }
 
         header {
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 20px;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
+            padding-right: 120px;
+            min-height: 120px;
         }
 
-        h1 { font-size: 2rem; color: #fff; margin-bottom: 10px; }
-        h3 { color: var(--accent); margin-top: 2.5rem; border-bottom: 1px solid var(--border); padding-bottom: 5px; text-transform: uppercase; font-size: 1rem; letter-spacing: 1px; }
+        .avatar {
+            position: absolute;
+            top: 10px;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 2px solid var(--accent);
+            box-shadow: 0 0 15px var(--accent-glow);
+            object-fit: cover;
+        }
+
+        h1 { 
+            font-size: 2.2rem; 
+            margin-bottom: 10px; 
+            background: linear-gradient(90deg, #ffffff, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(168, 85, 247, 0.2);
+        }
+
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 30px;
+            gap: 10px;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-dim);
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-bottom: 2px solid transparent;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .tab-btn:hover {
+            color: var(--text-main);
+        }
+
+        .tab-btn.active {
+            color: var(--accent);
+            border-bottom: 2px solid var(--accent);
+            text-shadow: 0 0 10px rgba(168, 85, 247, 0.3);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .tech-stack p {
+            background: var(--card-bg);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
         .tech-stack img {
             margin-right: 5px;
             margin-bottom: 5px;
+            margin-top: 10px;
             vertical-align: middle;
+            transition: transform 0.2s ease;
+        }
+
+        .tech-stack img:hover {
+            transform: scale(1.1);
         }
 
         .projects-list {
@@ -52,23 +133,56 @@
         .projects-list li {
             background: var(--card-bg);
             border: 1px solid var(--border);
-            border-radius: 6px;
-            padding: 15px;
-            margin-bottom: 10px;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .projects-list li:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent);
+            box-shadow: 0 8px 25px var(--accent-glow);
+        }
+
+        .projects-list li::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: var(--accent);
+            box-shadow: 0 0 10px var(--accent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .projects-list li:hover::before {
+            opacity: 1;
         }
 
         .project-name {
             font-weight: bold;
             color: var(--accent);
             display: block;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
         }
 
         .stats-container {
             text-align: center;
-            margin-top: 30px;
             padding: 20px;
             background: var(--card-bg);
-            border-radius: 6px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .stats-container:hover {
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.15);
         }
 
         .stats-container img {
@@ -85,18 +199,38 @@
             border-top: 1px solid var(--border);
             padding-top: 20px;
         }
+
+        @media (max-width: 600px) {
+            header {
+                padding-right: 0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .avatar {
+                position: static;
+                margin-bottom: 20px;
+            }
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
     <header>
+        <img src="avatar.png" alt="Javier Castro" class="avatar">
         <h1>Hi, I'm Javier Castro (Javier C)</h1>
         <p>A developer passionate about programming and open-source software. I mainly focus on system tool development and improving Linux ecosystems.</p>
     </header>
 
-    <section>
-        <h3>Technologies and Tools</h3>
+    <div class="tabs">
+        <button class="tab-btn active" onclick="openTab(event, 'stack')">Tech Stack</button>
+        <button class="tab-btn" onclick="openTab(event, 'projects')">Projects</button>
+        <button class="tab-btn" onclick="openTab(event, 'stats')">Stats</button>
+    </div>
+
+    <section id="stack" class="tab-content active">
         <div class="tech-stack">
             <p><strong>Languages:</strong><br>
                 <img src="https://img.shields.io/badge/C-00599C?style=flat-square&logo=c&logoColor=white" alt="C">
@@ -111,8 +245,7 @@
         </div>
     </section>
 
-    <section>
-        <h3>Projects and Contributions</h3>
+    <section id="projects" class="tab-content">
         <p>I actively collaborate on various open-source projects, focusing on launchers, packaging, and system environments:</p>
         <ul class="projects-list">
             <li>
@@ -130,10 +263,9 @@
         </ul>
     </section>
 
-    <section>
-        <h3>GitHub Stats</h3>
+    <section id="stats" class="tab-content">
         <div class="stats-container">
-            <img src="https://github-readme-streak-stats.herokuapp.com/?user=franckey02&theme=tokyonight" alt="GitHub Streak">
+            <img src="https://github-readme-streak-stats.herokuapp.com/?user=javiercplus&theme=tokyonight" alt="GitHub Streak">
         </div>
     </section>
 
@@ -141,6 +273,23 @@
         <p>Programming is my hobby and my way of contributing to the growth of open-source software.</p>
     </footer>
 </div>
+
+<script>
+    function openTab(evt, tabName) {
+        const tabContents = document.getElementsByClassName("tab-content");
+        for (let i = 0; i < tabContents.length; i++) {
+            tabContents[i].classList.remove("active");
+        }
+
+        const tabBtns = document.getElementsByClassName("tab-btn");
+        for (let i = 0; i < tabBtns.length; i++) {
+            tabBtns[i].classList.remove("active");
+        }
+
+        document.getElementById(tabName).classList.add("active");
+        evt.currentTarget.classList.add("active");
+    }
+</script>
 
 </body>
 </html>
