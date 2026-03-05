@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javier Castro | Developer Portfolio</title>
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --card-bg: #161b22;
+            --text-main: #c9d1d9;
+            --text-dim: #8b949e;
+            --accent: #58a6ff;
+            --border: #30363d;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+        }
+
+        header {
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        h1 { font-size: 2rem; color: #fff; margin-bottom: 10px; }
+        h3 { color: var(--accent); margin-top: 2.5rem; border-bottom: 1px solid var(--border); padding-bottom: 5px; text-transform: uppercase; font-size: 1rem; letter-spacing: 1px; }
+
+        .tech-stack img {
+            margin-right: 5px;
+            margin-bottom: 5px;
+            vertical-align: middle;
+        }
+
+        .projects-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .projects-list li {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+
+        .project-name {
+            font-weight: bold;
+            color: var(--accent);
+            display: block;
+        }
+
+        .stats-container {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: var(--card-bg);
+            border-radius: 6px;
+        }
+
+        .stats-container img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        footer {
+            margin-top: 50px;
+            text-align: center;
+            font-style: italic;
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border);
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Hi, I'm Javier Castro (Javier C)</h1>
+        <p>A developer passionate about programming and open-source software. I mainly focus on system tool development and improving Linux ecosystems.</p>
+    </header>
+
+    <section>
+        <h3>Technologies and Tools</h3>
+        <div class="tech-stack">
+            <p><strong>Languages:</strong><br>
+                <img src="https://img.shields.io/badge/C-00599C?style=flat-square&logo=c&logoColor=white" alt="C">
+                <img src="https://img.shields.io/badge/C++-00599C?style=flat-square&logo=c%2B%2B&logoColor=white" alt="C++">
+                <img src="https://img.shields.io/badge/Java-ED8B00?style=flat-square&logo=java&logoColor=white" alt="Java">
+                <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python">
+            </p>
+            <p><strong>Scripting and Systems:</strong><br>
+                <img src="https://img.shields.io/badge/Bash-4EAA25?style=flat-square&logo=gnu-bash&logoColor=white" alt="Bash">
+                <img src="https://img.shields.io/badge/Void_Linux-478061?style=flat-square&logo=void-linux&logoColor=white" alt="VoidLinux">
+            </p>
+        </div>
+    </section>
+
+    <section>
+        <h3>Projects and Contributions</h3>
+        <p>I actively collaborate on various open-source projects, focusing on launchers, packaging, and system environments:</p>
+        <ul class="projects-list">
+            <li>
+                <span class="project-name">TrinityLauncher</span>
+                Development of an efficient launcher for mc-bedrock.
+            </li>
+            <li>
+                <span class="project-name">Neko-Void</span>
+                Technical contributions to the project's core.
+            </li>
+            <li>
+                <span class="project-name">Void Linux</span>
+                Participating in the development and maintenance of the distribution's ecosystem.
+            </li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>GitHub Stats</h3>
+        <div class="stats-container">
+            <img src="https://github-readme-streak-stats.herokuapp.com/?user=franckey02&theme=tokyonight" alt="GitHub Streak">
+        </div>
+    </section>
+
+    <footer>
+        <p>Programming is my hobby and my way of contributing to the growth of open-source software.</p>
+    </footer>
+</div>
+
+</body>
+</html>
