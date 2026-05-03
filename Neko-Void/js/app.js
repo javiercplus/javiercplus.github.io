@@ -1,4 +1,4 @@
-/* Neko-Void — app.js (Versión Corregida) */
+
 
 const SecurityManager = {
     init() {
