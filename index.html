@@ -352,6 +352,142 @@
             border-radius: 8px;
         }
 
+        /* ====== CONTACTO ====== */
+        .contact-container {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 50px 30px;
+            text-align: center;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.08) 0%, transparent 60%);
+            animation: pulse 6s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 1; }
+        }
+
+        .contact-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 25px;
+            background: var(--gradient-2);
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--accent);
+            box-shadow: 0 0 30px var(--accent-glow);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .contact-title {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--text-main);
+            font-weight: 700;
+        }
+
+        .contact-description {
+            color: var(--text-dim);
+            font-size: 1.05rem;
+            margin-bottom: 35px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 40px;
+            background: var(--gradient-1);
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px var(--accent-glow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .contact-btn:hover::before {
+            left: 100%;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(168, 85, 247, 0.6);
+        }
+
+        .contact-btn i {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-btn:hover i {
+            transform: translateX(4px);
+        }
+
+        .contact-link-text {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: var(--text-dim);
+        }
+
+        .contact-link-text a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-link-text a:hover {
+            color: var(--text-main);
+            text-decoration: underline;
+        }
+        /* ====== FIN CONTACTO ====== */
+
         footer {
             margin-top: 50px;
             text-align: center;
@@ -403,6 +539,11 @@
             .tech-badges {
                 justify-content: center;
             }
+
+            .contact-btn {
+                padding: 14px 30px;
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
@@ -428,6 +569,9 @@
         </button>
         <button class="tab-btn" onclick="openTab(event, 'stats')">
             <i class="fas fa-chart-line"></i> Stats
+        </button>
+        <button class="tab-btn" onclick="openTab(event, 'contact')">
+            <i class="fas fa-envelope"></i> Contact
         </button>
     </div>
 
@@ -486,6 +630,30 @@
         <h2 class="section-title">GitHub Activity</h2>
         <div class="stats-container">
             <img src="https://github-readme-streak-stats.herokuapp.com/?user=javiercplus&theme=tokyonight" alt="GitHub Streak">
+        </div>
+    </section>
+
+    <section id="contact" class="tab-content">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-container">
+            <div class="contact-content">
+                <div class="contact-icon">
+                    <i class="fas fa-paper-plane"></i>
+                </div>
+                <h3 class="contact-title">Let's connect!</h3>
+                <p class="contact-description">
+                    Interested in collaborating, have a question about my projects, or just want to say hi? 
+                    Find all my social links and contact methods in one place.
+                </p>
+                <a href="http://linktr.ee/javiercplus" target="_blank" rel="noopener noreferrer" class="contact-btn">
+                    <i class="fas fa-link"></i>
+                    <span>Visit my Linktree</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <p class="contact-link-text">
+                    Or open directly: <a href="http://linktr.ee/javiercplus" target="_blank" rel="noopener noreferrer">linktr.ee/javiercplus</a>
+                </p>
+            </div>
         </div>
     </section>
 
