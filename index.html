@@ -4,17 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Javier Castro | Developer Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
             --bg-color: #09090b;
-            --card-bg: #161b22;
+            --card-bg: rgba(22, 27, 34, 0.6);
             --text-main: #e2e8f0;
             --text-dim: #94a3b8;
             --accent: #a855f7;
             --accent-glow: rgba(168, 85, 247, 0.4);
-            --border: #27272a;
-            --radius: 12px;
-            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --border: rgba(39, 39, 42, 0.5);
+            --gradient-1: linear-gradient(135deg, #a855f7 0%, #8b5cf6 100%);
+            --gradient-2: linear-gradient(135deg, rgba(168, 85, 247, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
         }
 
         * {
@@ -24,224 +25,272 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
             background-color: var(--bg-color);
             background-image: 
-                radial-gradient(circle at 20% 0%, rgba(168, 85, 247, 0.12) 0%, transparent 50%),
-                radial-gradient(circle at 80% 100%, rgba(168, 85, 247, 0.08) 0%, transparent 50%);
+                radial-gradient(circle at 10% 0%, rgba(168, 85, 247, 0.15) 0%, transparent 400px),
+                radial-gradient(circle at 90% 100%, rgba(168, 85, 247, 0.1) 0%, transparent 400px);
             background-attachment: fixed;
             color: var(--text-main);
             line-height: 1.6;
             min-height: 100vh;
+            padding: 40px 20px;
             display: flex;
             justify-content: center;
-            padding: 2rem 1.5rem;
+            align-items: flex-start;
         }
 
         .container {
-            max-width: 850px;
+            max-width: 900px;
             width: 100%;
+            animation: fadeInUp 0.6s ease-out;
         }
 
-        /* ===== HEADER ===== */
-        .header {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-            margin-bottom: 2.5rem;
-            flex-wrap: wrap;
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        .avatar-wrapper {
-            flex-shrink: 0;
+        header {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
             position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gradient-1);
+            opacity: 0.6;
+        }
+
+        .header-content {
+            display: flex;
+            gap: 30px;
+            align-items: center;
         }
 
         .avatar {
-            width: 100px;
-            height: 100px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
-            border: 2px solid var(--accent);
-            box-shadow: 0 0 25px var(--accent-glow);
+            border: 3px solid var(--accent);
+            box-shadow: 0 0 30px var(--accent-glow);
             object-fit: cover;
-            display: block;
-            transition: transform var(--transition), box-shadow var(--transition);
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
         }
 
         .avatar:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 35px rgba(168, 85, 247, 0.6);
+            transform: scale(1.05) rotate(5deg);
         }
 
-        .header-text h1 {
-            font-size: 2.4rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #ffffff 0%, var(--accent) 70%);
+        .header-text {
+            flex: 1;
+        }
+
+        h1 { 
+            font-size: 2.5rem; 
+            margin-bottom: 15px; 
+            background: linear-gradient(135deg, #ffffff 0%, var(--accent) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 0.4rem;
+            font-weight: 700;
             letter-spacing: -0.5px;
         }
 
-        .header-text .subtitle {
-            font-size: 1.1rem;
+        .header-text p {
             color: var(--text-dim);
-            max-width: 550px;
-            line-height: 1.5;
+            font-size: 1.1rem;
+            line-height: 1.7;
         }
 
-        /* ===== TABS ===== */
         .tabs {
             display: flex;
-            gap: 1.5rem;
-            border-bottom: 1px solid var(--border);
-            margin-bottom: 2rem;
-            padding-bottom: 0.2rem;
+            gap: 10px;
+            margin-bottom: 30px;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 8px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
         }
 
         .tab-btn {
-            background: none;
+            background: transparent;
             border: none;
             color: var(--text-dim);
+            padding: 14px 28px;
             font-size: 1rem;
             font-weight: 500;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            padding: 0.75rem 0;
             cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 10px;
+            flex: 1;
             position: relative;
-            transition: color var(--transition);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
 
-        .tab-btn::after {
+        .tab-btn::before {
             content: '';
             position: absolute;
-            bottom: -2px;
+            top: 0;
             left: 0;
-            width: 100%;
-            height: 2px;
-            background: var(--accent);
-            transform: scaleX(0);
-            transition: transform var(--transition);
-            border-radius: 2px;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient-1);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
         }
 
         .tab-btn:hover {
             color: var(--text-main);
+            transform: translateY(-2px);
         }
 
         .tab-btn.active {
-            color: var(--accent);
-            font-weight: 600;
+            color: white;
+            box-shadow: 0 4px 15px var(--accent-glow);
         }
 
-        .tab-btn.active::after {
-            transform: scaleX(1);
+        .tab-btn.active::before {
+            opacity: 1;
         }
 
-        /* ===== TAB CONTENT ===== */
         .tab-content {
             display: none;
-            animation: fadeSlide 0.4s ease forwards;
+            animation: fadeIn 0.5s ease;
         }
 
         .tab-content.active {
             display: block;
         }
 
-        @keyframes fadeSlide {
-            from { opacity: 0; transform: translateY(8px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes fadeIn {
+            from { 
+                opacity: 0; 
+                transform: translateY(15px);
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0);
+            }
         }
 
-        /* ===== TECH STACK ===== */
-        .tech-section {
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: var(--gradient-1);
+            border-radius: 2px;
+        }
+
+        .tech-stack {
             background: var(--card-bg);
+            backdrop-filter: blur(10px);
             border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 1.5rem;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
         }
 
-        .tech-group {
-            margin-bottom: 1.5rem;
+        .tech-category {
+            margin-bottom: 25px;
         }
 
-        .tech-group:last-child {
+        .tech-category:last-child {
             margin-bottom: 0;
         }
 
-        .tech-group h3 {
-            font-size: 0.95rem;
+        .tech-category h3 {
+            color: var(--accent);
+            font-size: 1.1rem;
+            margin-bottom: 15px;
             font-weight: 600;
-            color: var(--text-dim);
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-            margin-bottom: 0.8rem;
         }
 
-        .badge-container {
+        .tech-badges {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
+            gap: 10px;
         }
 
-        .badge-container img {
-            border-radius: 4px;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            height: 24px;
+        .tech-stack img {
+            transition: all 0.3s ease;
+            border-radius: 6px;
         }
 
-        .badge-container img:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-        }
-
-        /* ===== PROJECTS ===== */
-        .projects-intro {
-            color: var(--text-dim);
-            margin-bottom: 1.5rem;
-            font-size: 1.05rem;
+        .tech-stack img:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 6px 20px var(--accent-glow);
         }
 
         .projects-list {
             list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
+            display: grid;
+            gap: 20px;
         }
 
         .projects-list li {
             background: var(--card-bg);
+            backdrop-filter: blur(10px);
             border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 1.4rem 1.5rem;
-            transition: all var(--transition);
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
+            border-radius: 16px;
+            padding: 25px;
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
         }
 
         .projects-list li::before {
             content: '';
             position: absolute;
-            left: 0;
             top: 0;
+            left: 0;
+            width: 4px;
             height: 100%;
-            width: 3px;
-            background: var(--accent);
-            box-shadow: 0 0 12px var(--accent);
+            background: var(--gradient-1);
             opacity: 0;
-            transition: opacity var(--transition);
-            border-radius: 0 2px 2px 0;
+            transition: opacity 0.3s ease;
         }
 
         .projects-list li:hover {
+            transform: translateY(-5px);
             border-color: var(--accent);
-            box-shadow: 0 8px 25px var(--accent-glow);
-            transform: translateY(-2px);
+            box-shadow: 0 12px 30px var(--accent-glow);
         }
 
         .projects-list li:hover::before {
@@ -249,91 +298,110 @@
         }
 
         .project-icon {
-            font-size: 1.8rem;
-            flex-shrink: 0;
-            width: 42px;
-            height: 42px;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-2);
+            border: 1px solid var(--border);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(168, 85, 247, 0.1);
-            border-radius: 8px;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
             color: var(--accent);
-            border: 1px solid rgba(168, 85, 247, 0.2);
+            transition: all 0.3s ease;
         }
 
-        .project-info {
-            flex: 1;
+        .projects-list li:hover .project-icon {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 4px 15px var(--accent-glow);
         }
 
         .project-name {
             font-weight: 700;
-            font-size: 1.15rem;
             color: var(--accent);
             display: block;
-            margin-bottom: 0.25rem;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
         }
 
-        .project-desc {
+        .project-description {
             color: var(--text-dim);
-            font-size: 0.95rem;
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
-        /* ===== STATS ===== */
-        .stats-card {
+        .stats-container {
             background: var(--card-bg);
+            backdrop-filter: blur(10px);
             border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 2rem;
+            border-radius: 16px;
+            padding: 30px;
             text-align: center;
-            transition: box-shadow var(--transition);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
         }
 
-        .stats-card:hover {
-            box-shadow: 0 0 25px rgba(168, 85, 247, 0.15);
+        .stats-container:hover {
+            box-shadow: 0 8px 25px rgba(168, 85, 247, 0.2);
+            transform: translateY(-3px);
         }
 
-        .stats-card img {
+        .stats-container img {
             max-width: 100%;
             height: auto;
-            border-radius: 6px;
+            border-radius: 8px;
         }
 
-        /* ===== FOOTER ===== */
         footer {
-            margin-top: 4rem;
+            margin-top: 50px;
             text-align: center;
-            font-size: 0.9rem;
             color: var(--text-dim);
-            border-top: 1px solid var(--border);
-            padding-top: 2rem;
-            font-style: italic;
-            letter-spacing: 0.3px;
+            font-size: 0.95rem;
+            padding: 30px;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
 
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 650px) {
-            .header {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-                gap: 1.2rem;
+        footer i {
+            color: var(--accent);
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 15px;
             }
 
-            .header-text h1 {
-                font-size: 1.9rem;
+            header {
+                padding: 30px 20px;
+            }
+
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            h1 {
+                font-size: 2rem;
             }
 
             .tabs {
-                gap: 1rem;
-                justify-content: center;
+                flex-direction: column;
             }
 
-            .projects-list li {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.6rem;
+            .tab-btn {
+                padding: 12px 20px;
+            }
+
+            .tech-badges {
+                justify-content: center;
             }
         }
     </style>
@@ -341,105 +409,106 @@
 <body>
 
 <div class="container">
-    <!-- Header mejorado -->
-    <header class="header">
-        <div class="avatar-wrapper">
+    <header>
+        <div class="header-content">
             <img src="avatar.png" alt="Javier Castro" class="avatar">
-        </div>
-        <div class="header-text">
-            <h1>Hi, I'm Javier Castro (Javier C)</h1>
-            <p class="subtitle">
-                A developer passionate about programming and open-source software. 
-                I mainly focus on system tool development and improving Linux ecosystems.
-            </p>
+            <div class="header-text">
+                <h1>Hi, I'm Javier Castro</h1>
+                <p>A developer passionate about programming and open-source software. I mainly focus on system tool development and improving Linux ecosystems.</p>
+            </div>
         </div>
     </header>
 
-    <!-- Tabs -->
-    <nav class="tabs">
-        <button class="tab-btn active" onclick="openTab(event, 'stack')">Tech Stack</button>
-        <button class="tab-btn" onclick="openTab(event, 'projects')">Projects</button>
-        <button class="tab-btn" onclick="openTab(event, 'stats')">Stats</button>
-    </nav>
+    <div class="tabs">
+        <button class="tab-btn active" onclick="openTab(event, 'stack')">
+            <i class="fas fa-code"></i> Tech Stack
+        </button>
+        <button class="tab-btn" onclick="openTab(event, 'projects')">
+            <i class="fas fa-rocket"></i> Projects
+        </button>
+        <button class="tab-btn" onclick="openTab(event, 'stats')">
+            <i class="fas fa-chart-line"></i> Stats
+        </button>
+    </div>
 
-    <!-- Contenido de Tech Stack -->
     <section id="stack" class="tab-content active">
-        <div class="tech-section">
-            <div class="tech-group">
-                <h3>Languages</h3>
-                <div class="badge-container">
-                    <img src="https://img.shields.io/badge/C-00599C?style=flat-square&logo=c&logoColor=white" alt="C">
-                    <img src="https://img.shields.io/badge/C++-00599C?style=flat-square&logo=c%2B%2B&logoColor=white" alt="C++">
-                    <img src="https://img.shields.io/badge/Java-ED8B00?style=flat-square&logo=java&logoColor=white" alt="Java">
-                    <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python">
+        <h2 class="section-title">Technologies & Tools</h2>
+        <div class="tech-stack">
+            <div class="tech-category">
+                <h3>Programming Languages</h3>
+                <div class="tech-badges">
+                    <img src="https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white" alt="C">
+                    <img src="https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white" alt="C++">
+                    <img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white" alt="Java">
+                    <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python">
                 </div>
             </div>
-            <div class="tech-group">
-                <h3>Scripting &amp; Systems</h3>
-                <div class="badge-container">
-                    <img src="https://img.shields.io/badge/Bash-4EAA25?style=flat-square&logo=gnu-bash&logoColor=white" alt="Bash">
-                    <img src="https://img.shields.io/badge/Void_Linux-478061?style=flat-square&logo=void-linux&logoColor=white" alt="VoidLinux">
+            <div class="tech-category">
+                <h3>Scripting & Systems</h3>
+                <div class="tech-badges">
+                    <img src="https://img.shields.io/badge/Bash-4EAA25?style=for-the-badge&logo=gnu-bash&logoColor=white" alt="Bash">
+                    <img src="https://img.shields.io/badge/Void_Linux-478061?style=for-the-badge&logo=void-linux&logoColor=white" alt="VoidLinux">
+                    <img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black" alt="Linux">
+                    <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" alt="Git">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contenido de Projects -->
     <section id="projects" class="tab-content">
-        <p class="projects-intro">
-            I actively collaborate on various open-source projects, focusing on launchers, packaging, and system environments:
-        </p>
+        <h2 class="section-title">Featured Projects</h2>
         <ul class="projects-list">
             <li>
-                <div class="project-icon">🚀</div>
-                <div class="project-info">
-                    <span class="project-name">TrinityLauncher</span>
-                    <p class="project-desc">Development of an efficient launcher for mc-bedrock.</p>
+                <div class="project-icon">
+                    <i class="fas fa-gamepad"></i>
                 </div>
+                <span class="project-name">TrinityLauncher</span>
+                <p class="project-description">Development of an efficient launcher for mc-bedrock. Optimized for performance and user experience.</p>
             </li>
             <li>
-                <div class="project-icon">🐱</div>
-                <div class="project-info">
-                    <span class="project-name">Neko-Void</span>
-                    <p class="project-desc">Technical contributions to the project's core.</p>
+                <div class="project-icon">
+                    <i class="fas fa-code-branch"></i>
                 </div>
+                <span class="project-name">Neko-Void</span>
+                <p class="project-description">Technical contributions to the project's core. Focused on system optimization and package management.</p>
             </li>
             <li>
-                <div class="project-icon">🐧</div>
-                <div class="project-info">
-                    <span class="project-name">Void Linux</span>
-                    <p class="project-desc">Participating in the development and maintenance of the distribution's ecosystem.</p>
+                <div class="project-icon">
+                    <i class="fab fa-linux"></i>
                 </div>
+                <span class="project-name">Void Linux</span>
+                <p class="project-description">Participating in the development and maintenance of the distribution's ecosystem. Contributing to documentation and package updates.</p>
             </li>
         </ul>
     </section>
 
-    <!-- Contenido de Stats -->
     <section id="stats" class="tab-content">
-        <div class="stats-card">
+        <h2 class="section-title">GitHub Activity</h2>
+        <div class="stats-container">
             <img src="https://github-readme-streak-stats.herokuapp.com/?user=javiercplus&theme=tokyonight" alt="GitHub Streak">
         </div>
     </section>
 
     <footer>
+        <i class="fas fa-code"></i>
         <p>Programming is my hobby and my way of contributing to the growth of open-source software.</p>
     </footer>
 </div>
 
 <script>
     function openTab(evt, tabName) {
-        // Ocultar todos los contenidos
-        document.querySelectorAll('.tab-content').forEach(tab => {
-            tab.classList.remove('active');
-        });
-        // Desactivar todos los botones
-        document.querySelectorAll('.tab-btn').forEach(btn => {
-            btn.classList.remove('active');
-        });
-        // Mostrar el contenido seleccionado
-        document.getElementById(tabName).classList.add('active');
-        // Activar el botón clickeado
-        evt.currentTarget.classList.add('active');
+        const tabContents = document.getElementsByClassName("tab-content");
+        for (let i = 0; i < tabContents.length; i++) {
+            tabContents[i].classList.remove("active");
+        }
+
+        const tabBtns = document.getElementsByClassName("tab-btn");
+        for (let i = 0; i < tabBtns.length; i++) {
+            tabBtns[i].classList.remove("active");
+        }
+
+        document.getElementById(tabName).classList.add("active");
+        evt.currentTarget.classList.add("active");
     }
 </script>
 
