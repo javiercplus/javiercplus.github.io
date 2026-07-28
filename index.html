@@ -309,6 +309,7 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            cursor: pointer;
             box-shadow: 
                 -4px 0 0 0 var(--border),
                 4px 0 0 0 var(--border),
@@ -563,6 +564,43 @@
             transform: translateX(4px);
         }
 
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .social-btn {
+            width: 50px;
+            height: 50px;
+            background: var(--card-bg);
+            color: var(--text-dim);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 
+                -2px 0 0 0 var(--border),
+                2px 0 0 0 var(--border),
+                0 -2px 0 0 var(--border),
+                0 2px 0 0 var(--border);
+        }
+
+        .social-btn:hover {
+            transform: translateY(-3px);
+            color: var(--text-main);
+            box-shadow: 
+                -2px 0 0 0 var(--accent),
+                2px 0 0 0 var(--accent),
+                0 -2px 0 0 var(--accent),
+                0 2px 0 0 var(--accent),
+                0 5px 15px var(--accent-glow);
+        }
+
         .contact-link-text {
             margin-top: 20px;
             font-size: 1.1rem;
@@ -653,7 +691,7 @@
             <img src="avatar.png" alt="Javier Castro" class="avatar">
             <div class="header-text">
                 <h1>Hi, I'm Javier Castro</h1>
-                <p>A developer passionate about programming and open-source software. I mainly focus on system tool development and improving Linux ecosystems.</p>
+                <p>I code for fun, and I'm a musician, singer, voice actor, YouTuber, etc... Passionate about programming and open-source software, I mainly focus on system tool development and improving Linux ecosystems.</p>
             </div>
         </div>
     </header>
@@ -689,9 +727,16 @@
                 <h3>Scripting & Systems</h3>
                 <div class="tech-badges">
                     <img src="https://img.shields.io/badge/Bash-4EAA25?style=for-the-badge&logo=gnu-bash&logoColor=white" alt="Bash">
-                    <img src="https://img.shields.io/badge/Void_Linux-478061?style=for-the-badge&logo=void-linux&logoColor=white" alt="VoidLinux">
                     <img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black" alt="Linux">
                     <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" alt="Git">
+                    <img src="https://img.shields.io/badge/Void_Linux-478061?style=for-the-badge&logo=void-linux&logoColor=white" alt="VoidLinux">
+                    <img src="https://img.shields.io/badge/Alpine_Linux-0D597F?style=for-the-badge&logo=alpine-linux&logoColor=white" alt="Alpine">
+                    <img src="https://img.shields.io/badge/NixOS-5277C3?style=for-the-badge&logo=NixOS&logoColor=white" alt="NixOS">
+                    <img src="https://img.shields.io/badge/Arch_Linux-1793D1?style=for-the-badge&logo=arch-linux&logoColor=white" alt="Arch">
+                    <img src="https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white" alt="Ubuntu Server">
+                    <img src="https://img.shields.io/badge/Fedora-294172?style=for-the-badge&logo=fedora&logoColor=white" alt="Fedora">
+                    <img src="https://img.shields.io/badge/Neko--Void-478061?style=for-the-badge&logo=linux&logoColor=white" alt="Neko-Void">
+                    <img src="https://img.shields.io/badge/FreeBSD-AB2B28?style=for-the-badge&logo=freebsd&logoColor=white" alt="FreeBSD">
                 </div>
             </div>
         </div>
@@ -700,21 +745,21 @@
     <section id="projects" class="tab-content">
         <h2 class="section-title">Featured Projects</h2>
         <ul class="projects-list">
-            <li>
+            <li onclick="window.open('https://github.com/Trinity-LA/Trinity-Launcher', '_blank')">
                 <div class="project-icon">
                     <i class="fas fa-gamepad"></i>
                 </div>
                 <span class="project-name">Trinity Launcher</span>
                 <p class="project-description">Development of an efficient launcher for mc-bedrock. Optimized for performance and user experience.</p>
             </li>
-            <li>
+            <li onclick="window.open('https://neko-void.sourceforge.io/', '_blank')">
                 <div class="project-icon">
                     <i class="fas fa-code-branch"></i>
                 </div>
                 <span class="project-name">Neko-Void</span>
                 <p class="project-description">Technical contributions to the project's core. Focused on system optimization and package management.</p>
             </li>
-            <li>
+            <li onclick="window.open('https://github.com/javiercplus?tab=repositories&q=void&type=&language=&sort=', '_blank')">
                 <div class="project-icon">
                     <i class="fab fa-linux"></i>
                 </div>
@@ -748,6 +793,22 @@
                     <span>Visit my Linktree</span>
                     <i class="fas fa-arrow-right"></i>
                 </a>
+                
+                <div class="social-links">
+                    <a href="https://github.com/javiercplus" target="_blank" rel="noopener noreferrer" class="social-btn" title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://codeberg.org/javiercplus" target="_blank" rel="noopener noreferrer" class="social-btn" title="Codeberg">
+                        <i class="fas fa-code-branch"></i>
+                    </a>
+                    <a href="https://www.youtube.com/@javiercplus" target="_blank" rel="noopener noreferrer" class="social-btn" title="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="https://soundcloud.com/franckeycc" target="_blank" rel="noopener noreferrer" class="social-btn" title="SoundCloud">
+                        <i class="fab fa-soundcloud"></i>
+                    </a>
+                </div>
+
                 <p class="contact-link-text">
                     Or open directly: <a href="http://linktr.ee/javiercplus" target="_blank" rel="noopener noreferrer">linktr.ee/javiercplus</a>
                 </p>
