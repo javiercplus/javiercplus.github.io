@@ -737,6 +737,745 @@
             <div class="contact-content">
                 <div class="contact-icon">
                     <i class="fas fa-paper-plane"></i>
+                </div><!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javier Castro | Developer Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #09090b;
+            --card-bg: rgba(22, 27, 34, 0.6);
+            --text-main: #e2e8f0;
+            --text-dim: #94a3b8;
+            --accent: #a855f7;
+            --accent-glow: rgba(168, 85, 247, 0.4);
+            --border: #27272a;
+            --gradient-1: linear-gradient(135deg, #a855f7 0%, #8b5cf6 100%);
+            --gradient-2: linear-gradient(135deg, rgba(168, 85, 247, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'VT323', monospace;
+            background-color: var(--bg-color);
+            background-image: 
+                radial-gradient(circle at 10% 0%, rgba(168, 85, 247, 0.15) 0%, transparent 400px),
+                radial-gradient(circle at 90% 100%, rgba(168, 85, 247, 0.1) 0%, transparent 400px);
+            background-attachment: fixed;
+            color: var(--text-main);
+            line-height: 1.6;
+            font-size: 1.2rem;
+            min-height: 100vh;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        header {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: none;
+            border-radius: 0;
+            padding: 40px;
+            margin: 4px;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 
+                -4px 0 0 0 var(--border),
+                4px 0 0 0 var(--border),
+                0 -4px 0 0 var(--border),
+                0 4px 0 0 var(--border),
+                0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-1);
+            opacity: 0.6;
+        }
+
+        .header-content {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 0;
+            border: none;
+            margin: 4px;
+            box-shadow: 
+                -4px 0 0 0 var(--accent),
+                4px 0 0 0 var(--accent),
+                0 -4px 0 0 var(--accent),
+                0 4px 0 0 var(--accent),
+                0 0 30px var(--accent-glow);
+            object-fit: cover;
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
+        }
+
+        .avatar:hover {
+            transform: scale(1.05) rotate(5deg);
+        }
+
+        .header-text {
+            flex: 1;
+        }
+
+        h1 { 
+            font-size: 2.8rem; 
+            margin-bottom: 15px; 
+            background: linear-gradient(135deg, #ffffff 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .header-text p {
+            color: var(--text-dim);
+            font-size: 1.3rem;
+            line-height: 1.4;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin: 4px;
+            margin-bottom: 30px;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: none;
+            border-radius: 0;
+            padding: 12px;
+            box-shadow: 
+                -4px 0 0 0 var(--border),
+                4px 0 0 0 var(--border),
+                0 -4px 0 0 var(--border),
+                0 4px 0 0 var(--border),
+                0 4px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-dim);
+            padding: 14px 28px;
+            font-size: 1.3rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 0;
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 4px;
+            font-family: inherit;
+        }
+
+        .tab-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient-1);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .tab-btn:hover {
+            color: var(--text-main);
+            transform: translateY(-2px);
+        }
+
+        .tab-btn.active {
+            color: white;
+            background: var(--card-bg);
+            box-shadow: 
+                -4px 0 0 0 var(--accent),
+                4px 0 0 0 var(--accent),
+                0 -4px 0 0 var(--accent),
+                0 4px 0 0 var(--accent);
+        }
+
+        .tab-btn.active::before {
+            opacity: 1;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { 
+                opacity: 0; 
+                transform: translateY(15px);
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0);
+            }
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-transform: uppercase;
+        }
+
+        .section-title::before {
+            content: '';
+            width: 12px;
+            height: 24px;
+            background: var(--gradient-1);
+            border-radius: 0;
+        }
+
+        .tech-stack {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: none;
+            border-radius: 0;
+            margin: 4px;
+            padding: 30px;
+            box-shadow: 
+                -4px 0 0 0 var(--border),
+                4px 0 0 0 var(--border),
+                0 -4px 0 0 var(--border),
+                0 4px 0 0 var(--border),
+                0 4px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .tech-category {
+            margin-bottom: 25px;
+        }
+
+        .tech-category:last-child {
+            margin-bottom: 0;
+        }
+
+        .tech-category h3 {
+            color: var(--accent);
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .tech-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tech-stack img {
+            transition: all 0.3s ease;
+            border-radius: 0;
+        }
+
+        .tech-stack img:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 6px 20px var(--accent-glow);
+        }
+
+        .projects-list {
+            list-style: none;
+            display: grid;
+            gap: 20px;
+        }
+
+        .projects-list li {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: none;
+            border-radius: 0;
+            margin: 4px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 
+                -4px 0 0 0 var(--border),
+                4px 0 0 0 var(--border),
+                0 -4px 0 0 var(--border),
+                0 4px 0 0 var(--border),
+                0 4px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .projects-list li::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 100%;
+            background: var(--gradient-1);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .projects-list li:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                -4px 0 0 0 var(--accent),
+                4px 0 0 0 var(--accent),
+                0 -4px 0 0 var(--accent),
+                0 4px 0 0 var(--accent),
+                0 12px 30px var(--accent-glow);
+        }
+
+        .projects-list li:hover::before {
+            opacity: 1;
+        }
+
+        .project-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-2);
+            border: none;
+            border-radius: 0;
+            margin: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            color: var(--accent);
+            transition: all 0.3s ease;
+            box-shadow: 
+                -4px 0 0 0 var(--border),
+                4px 0 0 0 var(--border),
+                0 -4px 0 0 var(--border),
+                0 4px 0 0 var(--border);
+        }
+
+        .projects-list li:hover .project-icon {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 
+                -4px 0 0 0 var(--accent),
+                4px 0 0 0 var(--accent),
+                0 -4px 0 0 var(--accent),
+                0 4px 0 0 var(--accent),
+                0 4px 15px var(--accent-glow);
+        }
+
+        .project-name {
+            font-weight: 700;
+            color: var(--accent);
+            display: block;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .project-description {
+            color: var(--text-dim);
+            line-height: 1.6;
+        }
+
+        .stats-container {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: none;
+            border-radius: 0;
+            margin: 4px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 
+                -4px 0 0 0 var(--border),
+                4px 0 0 0 var(--border),
+                0 -4px 0 0 var(--border),
+                0 4px 0 0 var(--border),
+                0 4px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .stats-container:hover {
+            box-shadow: 
+                -4px 0 0 0 var(--accent),
+                4px 0 0 0 var(--accent),
+                0 -4px 0 0 var(--accent),
+                0 4px 0 0 var(--accent),
+                0 8px 25px rgba(168, 85, 247, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .stats-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0;
+        }
+
+        .contact-container {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: none;
+            border-radius: 0;
+            margin: 4px;
+            padding: 50px 30px;
+            text-align: center;
+            box-shadow: 
+                -4px 0 0 0 var(--border),
+                4px 0 0 0 var(--border),
+                0 -4px 0 0 var(--border),
+                0 4px 0 0 var(--border),
+                0 4px 16px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.08) 0%, transparent 60%);
+            animation: pulse 6s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 1; }
+        }
+
+        .contact-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-icon {
+            width: 80px;
+            height: 80px;
+            margin: 4px auto 25px;
+            background: var(--gradient-2);
+            border: none;
+            border-radius: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--accent);
+            box-shadow: 
+                -4px 0 0 0 var(--accent),
+                4px 0 0 0 var(--accent),
+                0 -4px 0 0 var(--accent),
+                0 4px 0 0 var(--accent),
+                0 0 30px var(--accent-glow);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .contact-title {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            color: var(--text-main);
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .contact-description {
+            color: var(--text-dim);
+            font-size: 1.3rem;
+            margin-bottom: 35px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 40px;
+            background: var(--gradient-1);
+            color: white;
+            text-decoration: none;
+            font-size: 1.4rem;
+            font-weight: 600;
+            border-radius: 0;
+            border: none;
+            margin: 4px;
+            transition: all 0.3s ease;
+            box-shadow: 
+                -4px 0 0 0 var(--accent),
+                4px 0 0 0 var(--accent),
+                0 -4px 0 0 var(--accent),
+                0 4px 0 0 var(--accent),
+                0 4px 20px var(--accent-glow);
+            position: relative;
+            overflow: hidden;
+            font-family: inherit;
+        }
+
+        .contact-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .contact-btn:hover::before {
+            left: 100%;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 
+                -4px 0 0 0 var(--text-main),
+                4px 0 0 0 var(--text-main),
+                0 -4px 0 0 var(--text-main),
+                0 4px 0 0 var(--text-main),
+                0 8px 30px rgba(168, 85, 247, 0.6);
+        }
+
+        .contact-btn i {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-btn:hover i {
+            transform: translateX(4px);
+        }
+
+        .contact-link-text {
+            margin-top: 20px;
+            font-size: 1.1rem;
+            color: var(--text-dim);
+        }
+
+        .contact-link-text a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-link-text a:hover {
+            color: var(--text-main);
+            text-decoration: underline;
+        }
+
+        footer {
+            margin: 4px;
+            margin-top: 50px;
+            text-align: center;
+            color: var(--text-dim);
+            font-size: 1.1rem;
+            padding: 30px;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: none;
+            border-radius: 0;
+            box-shadow: 
+                -4px 0 0 0 var(--border),
+                4px 0 0 0 var(--border),
+                0 -4px 0 0 var(--border),
+                0 4px 0 0 var(--border),
+                0 4px 16px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        footer i {
+            color: var(--accent);
+            font-size: 1.3rem;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 15px;
+            }
+
+            header {
+                padding: 30px 20px;
+            }
+
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .tabs {
+                flex-direction: column;
+            }
+
+            .tab-btn {
+                padding: 12px 20px;
+            }
+
+            .tech-badges {
+                justify-content: center;
+            }
+
+            .contact-btn {
+                padding: 14px 30px;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <div class="header-content">
+            <img src="avatar.png" alt="Javier Castro" class="avatar">
+            <div class="header-text">
+                <h1>Hi, I'm Javier Castro</h1>
+                <p>A developer passionate about programming and open-source software. I mainly focus on system tool development and improving Linux ecosystems.</p>
+            </div>
+        </div>
+    </header>
+
+    <div class="tabs">
+        <button class="tab-btn active" onclick="openTab(event, 'stack')">
+            <i class="fas fa-code"></i> Tech Stack
+        </button>
+        <button class="tab-btn" onclick="openTab(event, 'projects')">
+            <i class="fas fa-rocket"></i> Projects
+        </button>
+        <button class="tab-btn" onclick="openTab(event, 'stats')">
+            <i class="fas fa-chart-line"></i> Stats
+        </button>
+        <button class="tab-btn" onclick="openTab(event, 'contact')">
+            <i class="fas fa-envelope"></i> Contact
+        </button>
+    </div>
+
+    <section id="stack" class="tab-content active">
+        <h2 class="section-title">Technologies & Tools</h2>
+        <div class="tech-stack">
+            <div class="tech-category">
+                <h3>Programming Languages</h3>
+                <div class="tech-badges">
+                    <img src="https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white" alt="C">
+                    <img src="https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white" alt="C++">
+                    <img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white" alt="Java">
+                    <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python">
+                </div>
+            </div>
+            <div class="tech-category">
+                <h3>Scripting & Systems</h3>
+                <div class="tech-badges">
+                    <img src="https://img.shields.io/badge/Bash-4EAA25?style=for-the-badge&logo=gnu-bash&logoColor=white" alt="Bash">
+                    <img src="https://img.shields.io/badge/Void_Linux-478061?style=for-the-badge&logo=void-linux&logoColor=white" alt="VoidLinux">
+                    <img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black" alt="Linux">
+                    <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" alt="Git">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="tab-content">
+        <h2 class="section-title">Featured Projects</h2>
+        <ul class="projects-list">
+            <li>
+                <div class="project-icon">
+                    <i class="fas fa-gamepad"></i>
+                </div>
+                <span class="project-name">TrinityLauncher</span>
+                <p class="project-description">Development of an efficient launcher for mc-bedrock. Optimized for performance and user experience.</p>
+            </li>
+            <li>
+                <div class="project-icon">
+                    <i class="fas fa-code-branch"></i>
+                </div>
+                <span class="project-name">Neko-Void</span>
+                <p class="project-description">Technical contributions to the project's core. Focused on system optimization and package management.</p>
+            </li>
+            <li>
+                <div class="project-icon">
+                    <i class="fab fa-linux"></i>
+                </div>
+                <span class="project-name">Void Linux</span>
+                <p class="project-description">Participating in the development and maintenance of the distribution's ecosystem. Contributing to documentation and package updates.</p>
+            </li>
+        </ul>
+    </section>
+
+    <section id="stats" class="tab-content">
+        <h2 class="section-title">GitHub Activity</h2>
+        <div class="stats-container">
+            <img src="https://github-readme-streak-stats.herokuapp.com/?user=javiercplus&theme=dracula" alt="GitHub Streak">
+        </div>
+    </section>
+
+    <section id="contact" class="tab-content">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-container">
+            <div class="contact-content">
+                <div class="contact-icon">
+                    <i class="fas fa-paper-plane"></i>
                 </div>
                 <h3 class="contact-title">Let's connect!</h3>
                 <p class="contact-description">
@@ -778,5 +1517,50 @@
     }
 </script>
 
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"238da3724e7946b7a91cbd1ad87659d3","r":1}' crossorigin="anonymous"></script>
+</body>
+</html>
+
+                <h3 class="contact-title">Let's connect!</h3>
+                <p class="contact-description">
+                    Interested in collaborating, have a question about my projects, or just want to say hi? 
+                    Find all my social links and contact methods in one place.
+                </p>
+                <a href="http://linktr.ee/javiercplus" target="_blank" rel="noopener noreferrer" class="contact-btn">
+                    <i class="fas fa-link"></i>
+                    <span>Visit my Linktree</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <p class="contact-link-text">
+                    Or open directly: <a href="http://linktr.ee/javiercplus" target="_blank" rel="noopener noreferrer">linktr.ee/javiercplus</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <i class="fas fa-code"></i>
+        <p>Programming is my hobby and my way of contributing to the growth of open-source software.</p>
+    </footer>
+</div>
+
+<script>
+    function openTab(evt, tabName) {
+        const tabContents = document.getElementsByClassName("tab-content");
+        for (let i = 0; i < tabContents.length; i++) {
+            tabContents[i].classList.remove("active");
+        }
+
+        const tabBtns = document.getElementsByClassName("tab-btn");
+        for (let i = 0; i < tabBtns.length; i++) {
+            tabBtns[i].classList.remove("active");
+        }
+
+        document.getElementById(tabName).classList.add("active");
+        evt.currentTarget.classList.add("active");
+    }
+</script>
+
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"238da3724e7946b7a91cbd1ad87659d3","r":1}' crossorigin="anonymous"></script>
 </body>
 </html>
